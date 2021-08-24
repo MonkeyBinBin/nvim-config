@@ -11,9 +11,6 @@ Plug 'tpope/vim-rhubarb'
 " Auto close parentheses
 Plug 'cohama/lexima.vim'
 
-" Theme
-Plug 'morhetz/gruvbox'
-
 " change/add such surroundings in pairs
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
