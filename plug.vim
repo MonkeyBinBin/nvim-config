@@ -41,6 +41,9 @@ if has('nvim')
 
   " nvim-treesitter
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+
+  " nvim-comment
+  Plug 'terrortylor/nvim-comment'
 endif
 
 call plug#end()

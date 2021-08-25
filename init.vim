@@ -85,8 +85,10 @@ augroup END
 
 augroup NumberToggle
   autocmd!
-  autocmd BufEnter * set relativenumber
-  autocmd BufLeave * set norelativenumber
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+  " autocmd BufEnter * set relativenumber
+  " autocmd BufLeave * set norelativenumber
 augroup END
 
 if &term =~ "screen"
