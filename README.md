@@ -31,7 +31,7 @@ brew install ripgrep
 ## Install for LSP
 
 ```bash
-npm install -g pyright typescript typescript-language-server diagnostic-languageserver
+npm install -g pyright typescript typescript-language-server diagnostic-languageserver vscode-langservers-extracted @angular/language-server stylelint-lsp vim-language-server vls
 ```
 
 ## Clone neovim config to ~/.config/nvim/

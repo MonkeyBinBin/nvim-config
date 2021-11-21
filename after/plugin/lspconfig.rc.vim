@@ -39,7 +39,7 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap('n', '<C-j>', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   -- buf_set_keymap('n', '<S-C-j>', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
   -- formatting
   if client.resolved_capabilities.document_formatting then
@@ -83,7 +83,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'tsserver' }
+local servers = { 'pyright', 'tsserver', 'html', 'cssls', 'jsonls', 'vimls', 'vuels' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -93,17 +93,14 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-require 'diagnosticls-configs'.init {
-  on_attach = on_attach
-}
-
-local ts_standard = require 'diagnosticls-configs.linters.ts_standard'
-local ts_standard_fmt = require 'diagnosticls-configs.formatters.ts_standard_fmt'
-require 'diagnosticls-configs'.setup {
-  ['typescript'] = {
-    linter = ts_standard,
-    formatter = ts_standard_fmt
-  }
+local dlsconfig = require 'diagnosticls-configs'
+dlsconfig.init {
+  -- Your custom attach function
+  on_attach = on_attach,
+  -- Apply default config for supported linters and formatters
+  default_config = true,
+  -- Default to true, use false if you don't want to setup formatters by default
+  format = true
 }
 
 -- icon
