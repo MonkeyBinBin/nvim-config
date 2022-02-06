@@ -134,6 +134,10 @@ runtime ./maps.vim
 " ---------------------------------------------------------------------
 set background=dark
 " setting for Gruvbox
-let g:gruvbox_transparent_bg=1
+let g:gruvbox_transparent_bg = 1
 colorscheme Gruvbox
 
+
+" Global var
+" ---------------------------------------------------------------------
+let g:python3_host_prog = "/usr/local/opt/python@3.9/bin/python3"

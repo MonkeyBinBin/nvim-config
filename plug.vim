@@ -18,9 +18,7 @@ Plug 'tpope/vim-surround'
 if has('nvim')
   " statusline
   Plug 'hoob3rt/lualine.nvim'
-  " icon for statusline
   Plug 'kyazdani42/nvim-web-devicons'
-  Plug 'ryanoasis/vim-devicons'
 
   " browse files (side menu tree)
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -29,13 +27,12 @@ if has('nvim')
 
   " integrate language server features for auto-completion and snippet
   Plug 'neovim/nvim-lspconfig'
+  Plug 'williamboman/nvim-lsp-installer'
   Plug 'glepnir/lspsaga.nvim'
   Plug 'folke/lsp-colors.nvim'
   Plug 'nvim-lua/completion-nvim'
-  Plug 'creativenull/diagnosticls-configs-nvim'
 
   " nvim-telescope
-  Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
 

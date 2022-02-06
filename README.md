@@ -1,9 +1,13 @@
 # Neovim config
 
-## Install
+## Basic installation
 
 ```bash
 brew install neovim
+brew install ripgrep
+brew install fd
+
+npm install -g neovim
 ```
 
 ## Install junegunn/vim-plug
@@ -22,13 +26,7 @@ iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
     ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
 ```
 
-## Install ripgrep for telescope
-
-```bash
-brew install ripgrep
-```
-
-## Install for LSP
+## Install for LSP(Use nvim-lsp-installer no need install)
 
 ```bash
 npm install -g pyright typescript typescript-language-server diagnostic-languageserver vscode-langservers-extracted @angular/language-server stylelint-lsp vim-language-server vls
@@ -36,7 +34,7 @@ npm install -g pyright typescript typescript-language-server diagnostic-language
 
 ## Clone neovim config to ~/.config/nvim/
 
-## Start up neovim, use PlugInstall command install plug
+## Start up neovim, use :PlugInstall command install plug
 
 ## Known issues
 

@@ -9,6 +9,8 @@ EOF
 lua << EOF
 local nvim_lsp = require('lspconfig')
 local protocol = require'vim.lsp.protocol'
+local lsp_installer = require("nvim-lsp-installer")
+local lsp_installer_servers = require('nvim-lsp-installer.servers')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -81,27 +83,39 @@ local on_attach = function(client, bufnr)
   }
 end
 
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'tsserver', 'html', 'cssls', 'jsonls', 'vimls', 'vuels' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
+local servers = { 'tsserver', 'html', 'cssls', 'jsonls', 'vuels', 'diagnosticls', 'angularls', 'emmet_ls', 'cssmodules_ls', 'eslint' }
+
+lsp_installer.settings({
+  ui = { icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
     }
   }
-end
+})
 
-local dlsconfig = require 'diagnosticls-configs'
-dlsconfig.init {
-  -- Your custom attach function
-  on_attach = on_attach,
-  -- Apply default config for supported linters and formatters
-  default_config = true,
-  -- Default to true, use false if you don't want to setup formatters by default
-  format = true
-}
+-- Loop through the servers listed above.
+for _, server_name in pairs(servers) do
+  local server_available, server = lsp_installer_servers.get_server(server_name)
+  if server_available then
+    server:on_ready(function ()
+      -- When this particular server is ready (i.e. when installation is finished or the server is already installed),
+      -- this function will be invoked. Make sure not to use the "catch-all" lsp_installer.on_server_ready()
+      -- function to set up servers, to avoid doing setting up a server twice.
+      local opts = {
+        on_attach = on_attach,
+        flags = {
+          debounce_text_changes = 150,
+        }
+      }
+      server:setup(opts)
+    end)
+    if not server:is_installed() then
+      -- Queue the server to be installed.
+      server:install()
+    end
+  end
+end
 
 -- icon
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
