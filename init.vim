@@ -137,7 +137,3 @@ set background=dark
 let g:gruvbox_transparent_bg = 1
 colorscheme Gruvbox
 
-
-" Global var
-" ---------------------------------------------------------------------
-let g:python3_host_prog = "/usr/local/opt/python@3.9/bin/python3"
