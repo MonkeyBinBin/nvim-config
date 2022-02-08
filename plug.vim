@@ -16,6 +16,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
 if has('nvim')
+  " lazygit for nvim
+  Plug 'kdheepak/lazygit.nvim'
+
   " statusline
   Plug 'hoob3rt/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
@@ -28,7 +31,7 @@ if has('nvim')
   " integrate language server features for auto-completion and snippet
   Plug 'neovim/nvim-lspconfig'
   Plug 'williamboman/nvim-lsp-installer'
-  Plug 'glepnir/lspsaga.nvim'
+  Plug 'tami5/lspsaga.nvim'
   Plug 'folke/lsp-colors.nvim'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
@@ -36,6 +39,7 @@ if has('nvim')
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'onsails/lspkind-nvim'
+  Plug 'jose-elias-alvarez/null-ls.nvim'
 
   " nvim-telescope
   Plug 'nvim-lua/plenary.nvim'
@@ -46,6 +50,9 @@ if has('nvim')
 
   " nvim-comment
   Plug 'terrortylor/nvim-comment'
+
+  " like vscode extension gitlens
+  Plug 'lewis6991/gitsigns.nvim'
 endif
 
 call plug#end()

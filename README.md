@@ -6,6 +6,7 @@
 brew install neovim
 brew install ripgrep
 brew install fd
+brew install lazygit
 
 npm install -g neovim
 ```
@@ -24,12 +25,6 @@ Windows (PowerShell)
 ```bash
 iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
     ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
-```
-
-## Install for LSP(Use nvim-lsp-installer no need install)
-
-```bash
-npm install -g pyright typescript typescript-language-server diagnostic-languageserver vscode-langservers-extracted @angular/language-server stylelint-lsp vim-language-server vls
 ```
 
 ## Clone neovim config to ~/.config/nvim/
